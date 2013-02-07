@@ -1,5 +1,4 @@
-
-CREATE DATABASE IF NOT EXISTS `catalogo`;
+CREATE DATABASE IF NOT EXISTS `catalogo` CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `catalogo`;
 
 
@@ -9,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `ciudades` (
   `division` smallint(6) NOT NULL,
   `region` varchar(7) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 
 
 INSERT INTO `ciudades` (`id`, `ciudad`, `division`, `region`) VALUES
@@ -64,8 +63,10 @@ INSERT INTO `ciudades` (`id`, `ciudad`, `division`, `region`) VALUES
 	(49, 'Xico', 89, 'CENTRO'),
 	(50, 'Yautepec', 42, 'CENTRO'),
 	(51, 'Zumpango Del Rio', 49, 'CENTRO'),
-	(52, 'Valladolid', 34, ''),
-	(53, 'Tihuatlán	', 90, '');
+	(52, 'Valladolid', 34, 'SUR'),
+	(53, 'Tihuatlán	', 90, 'CENTRO');
+
+
 
 CREATE TABLE IF NOT EXISTS `oficinas` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -74,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `oficinas` (
   `oficina` varchar(50) NOT NULL,
   `region` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
 
 
 INSERT INTO `oficinas` (`id`, `id_division`, `division`, `oficina`, `region`) VALUES
@@ -107,7 +108,7 @@ INSERT INTO `oficinas` (`id`, `id_division`, `division`, `oficina`, `region`) VA
 	(27, 46, '46-CHILPANCINGO', 'INSURGENTES', 1),
 	(28, 46, '46-CHILPANCINGO', 'OFICINA CENTRAL CHILPANCINGO', 1),
 	(29, 49, '49-ZUMPANGO DEL RIO', 'ZUMPANGO DEL RIO', 1),
-	(30, 81, '81- IXTAPALUCA', 'LOS REYES LA PAZ', 1),
+	(30, 81, '81-IXTAPALUCA', 'LOS REYES LA PAZ', 1),
 	(31, 81, '81-IXTAPALUCA', 'IXTAPALUCA', 1),
 	(32, 81, '81-IXTAPALUCA', 'CUATRO VIENTOS', 1),
 	(33, 83, '83-CHIMALHUACÁN', 'CHIMALHUACAN', 1),
@@ -135,7 +136,7 @@ INSERT INTO `oficinas` (`id`, `id_division`, `division`, `oficina`, `region`) VA
 	(55, 14, '14-MEXICALI', 'ANAHUAC', 2),
 	(56, 14, '14-MEXICALI', 'JARDINES DEL VALLE', 2),
 	(57, 15, '15-ROSARITO', 'ROSARITO', 2),
-	(58, 51, '51- CHIHUAHUA', 'NOGALES', 2),
+	(58, 51, '51-CHIHUAHUA', 'NOGALES', 2),
 	(59, 51, '51-CHIHUAHUA', 'SAUCITO', 2),
 	(60, 51, '51-CHIHUAHUA', 'LA FUENTE', 2),
 	(61, 51, '51-CHIHUAHUA', 'BLAS CANO Oficina Principal', 2),
@@ -185,7 +186,6 @@ CREATE TABLE IF NOT EXISTS `region` (
   `region` char(7) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
 
 INSERT INTO `region` (`id`, `region`) VALUES
 	(1, 'CENTRO'),
