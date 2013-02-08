@@ -24,7 +24,7 @@
           	<div class="row-fluid">
 				<div class="widget container-narrow widget-header">
 					<div class="widget-body clearfix" style="padding:25px;">
-		      			<form action="oauth.php" method="post">
+		      			<form action="oauth.php" method="post" id="contact-form">
                   <center>
                       <img src="a/assets/img/exp3602.svg" style=" width=:150px; height:100px;" alt="Realm Admin Template">
                    </center> 
@@ -33,17 +33,17 @@
 		      				</div>
 							<div class="control-group">
 								<div class="controls">
-									<input class="btn-block" type="text" id="inputEmail" name="usuario" placeholder="Usuario">
+									<input class="btn-block" type="text" id="inputEmail" name="usuario" id="usuario" placeholder="Usuario">
 								</div>
 							</div>
 							<div class="control-group">
 								<div class="controls">
-									<input class="btn-block" type="password" id="inputPassword" name="password" placeholder="Contraseña">
+									<input class="btn-block" type="password" id="inputPassword" name="password" id="password" placeholder="Contraseña">
 								</div>
 							</div>
               <div class="control-group">
                 <div class="controls">
-                  <select class="btn-block" name="region">
+                  <select class="btn-block" name="region" id="region">
                     <option value="">Elige region</option>
                     <option value="1">Region Norte</option>
                     <option value="2">Region Centro</option>
@@ -64,7 +64,7 @@
       </div>
     </div>
     </div>
-    <script type="text/javascript" src="a/assets/js//jquery-latest.js"></script>
+    <script src="a/assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="a/assets/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="a/assets/js/raphael-min.js"></script>
     <script type="text/javascript" src="a/assets/js/bootstrap.js"></script>
@@ -77,5 +77,36 @@
     <script type="text/javascript" src="a/assets/js/jquery.elfinder.min.html"></script> 
     <script type="text/javascript" src="a/assets/js/jquery.alertify.min.js"></script> 
     <script type="text/javascript" src="a/assets/js/realm.js"></script>
+    <script type="text/javascript" src="a/assets/js/jquery.validate.js"></script>
+    <script type="text/javascript">
+$(document).ready(function(){
+ 
+ $('#contact-form').validate(
+ {
+  rules: {
+    usuario: {
+      minlength: 2,
+      required: true
+    },
+    password: {
+      minlength: 2,
+      required: true
+    },
+    region: {
+      minlength: 1,
+      required: true
+    }
+  },
+  highlight: function(element) {
+    $(element).closest('.control-group').removeClass('success').addClass('error');
+  },
+  success: function(element) {
+    element
+    .text('').addClass('valid')
+    .closest('.control-group').removeClass('error').addClass('success');
+  }
+ });
+}); // end document.ready
+    </script>
   </body>
 </html>
